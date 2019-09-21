@@ -1,0 +1,75 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 2,
+    "identityHash": "735557760a9edca97349d283e76f6357",
+    "entities": [
+      {
+        "tableName": "version_key",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`number` INTEGER NOT NULL, `active` INTEGER NOT NULL, `orderBy` INTEGER NOT NULL, `copyRight` INTEGER NOT NULL, `tableName` TEXT, `verAbbr` TEXT, `transLang` TEXT, `verName` TEXT, PRIMARY KEY(`number`))",
+        "fields": [
+          {
+            "fieldPath": "number",
+            "columnName": "number",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "active",
+            "columnName": "active",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "orderBy",
+            "columnName": "orderBy",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "copyRight",
+            "columnName": "copyRight",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "tableName",
+            "columnName": "tableName",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "verAbbr",
+            "columnName": "verAbbr",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "transLang",
+            "columnName": "transLang",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "verName",
+            "columnName": "verName",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "number"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"735557760a9edca97349d283e76f6357\")"
+    ]
+  }
+}

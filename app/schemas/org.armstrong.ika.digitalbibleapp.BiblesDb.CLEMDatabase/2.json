@@ -1,0 +1,51 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 2,
+    "identityHash": "c7839fa892a8b287797151334d5b8a6a",
+    "entities": [
+      {
+        "tableName": "t_bible",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`b` INTEGER NOT NULL, `c` INTEGER NOT NULL, `v` INTEGER NOT NULL, `t` TEXT, PRIMARY KEY(`b`))",
+        "fields": [
+          {
+            "fieldPath": "b",
+            "columnName": "b",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "c",
+            "columnName": "c",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "v",
+            "columnName": "v",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "t",
+            "columnName": "t",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "b"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"c7839fa892a8b287797151334d5b8a6a\")"
+    ]
+  }
+}
