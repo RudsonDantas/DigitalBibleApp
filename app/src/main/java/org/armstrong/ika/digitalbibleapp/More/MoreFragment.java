@@ -52,6 +52,8 @@ public class MoreFragment extends Fragment {
 
     protected ColorPickerView.WHEEL_TYPE wheelStyle;
 
+    private String[] items;
+
     public static MoreFragment newInstance() {
 
         MoreFragment moreFragment = new MoreFragment();
@@ -68,7 +70,7 @@ public class MoreFragment extends Fragment {
 
         currentBackgroundColor = preferenceProvider.getColorVar();
 
-        String items[] = {
+        items = new String[]{
                 getString(R.string.activate_versions),
                 getString(R.string.highlights),
                 getString(R.string.notes),
@@ -278,7 +280,7 @@ public class MoreFragment extends Fragment {
 
                     builder.setView(viewInflated);
 
-                    builder.setPositiveButton(Integer.toString(R.string.ok), new DialogInterface.OnClickListener() {
+                    builder.setPositiveButton(getString(R.string.ok), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
 
@@ -292,16 +294,16 @@ public class MoreFragment extends Fragment {
                                 // unlock
                                 MainActivity.getInstance().unlockVersions();
 
-                                Utils.makeToast(getContext(), Integer.toString(R.string.unlocked));
+                                Utils.makeToast(getContext(), getString(R.string.unlocked));
 
                             } else {
 
-                                Utils.makeToast(getContext(), Integer.toString(R.string.error));
+                                Utils.makeToast(getContext(), getString(R.string.error));
                             }
 
                         }
                     });
-                    builder.setNegativeButton(Integer.toString(R.string.cancel), new DialogInterface.OnClickListener() {
+                    builder.setNegativeButton(getString(R.string.cancel), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             dialog.cancel();
@@ -330,25 +332,6 @@ public class MoreFragment extends Fragment {
     }
 
     public void updateMoreRecyclerView(int size) {
-
-        moreItems = new ArrayList<>();
-
-        String items[] = new String[]{
-                getString(R.string.activate_versions),
-                getString(R.string.highlights),
-                getString(R.string.notes),
-                getString(R.string.picker),
-                getString(R.string.picker_style),
-                getString(R.string.text_size),
-                getString(R.string.share_app),
-                getString(R.string.about)
-        };
-
-        for (String i : items) {
-            moreModel = new MoreModel();
-            moreModel.setMoreText(i);
-            moreItems.add(moreModel);
-        }
 
         moreFragmentAdapter = new MoreFragmentAdapter(moreItems, size);
         recyclerView.setAdapter(moreFragmentAdapter);
