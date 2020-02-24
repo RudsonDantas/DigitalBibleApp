@@ -78,4 +78,6 @@
     <string name="completed">Completed</string>
     <string name="completed_mark">Mark as read</string>
     <string name="completed_marked">marked as read</string>
+    <string name="btn_update">Update</string>
+    <string name="btn_delete">Delete</string>
 </resources>

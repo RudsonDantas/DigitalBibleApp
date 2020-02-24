@@ -2,16 +2,14 @@ package org.armstrong.ika.digitalbibleapp.Notes;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
-import android.util.Log;
+import androidx.preference.PreferenceManager;
 
 import org.armstrong.ika.digitalbibleapp.NotesDb.NotesEntities;
 import org.armstrong.ika.digitalbibleapp.NotesDb.NotesRepository;
 
-import java.util.Iterator;
 import java.util.List;
 
-public class NotesUpgrade {
+public class NotesUpgrade { // is this class still necessary?
 
     Context context;
     protected NotesRepository notesRepository;
@@ -36,9 +34,9 @@ public class NotesUpgrade {
             List<NotesEntities> notesEntities = notesRepository.getAllUpgradeNotes();
 
             for (int i = 0; i < notesEntities.size(); i++) {
-                Log.e("logg", "doNotesUpgrade: " + notesEntities.get(i).getRef());
+                //Log.e("logg", "doNotesUpgrade: " + notesEntities.get(i).getRef());
                 String[] parts = notesEntities.get(i).getRef().split(" ");
-                Log.e("logg", "doNotesUpgrade: " + parts[0] );
+                //Log.e("logg", "doNotesUpgrade: " + parts[0] );
             }
 
         }

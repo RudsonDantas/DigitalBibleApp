@@ -1,6 +1,6 @@
 package org.armstrong.ika.digitalbibleapp;
 
-public class Constants {
+final public class Constants {
 
     public static final String VERSION_KEY_DATABASE_NAME = "dba_version_key.db";
     public static final String LANGUAGE_KEY_DATABASE_NAME = "dba_language_key.db";

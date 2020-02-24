@@ -150,14 +150,14 @@ public class AboutFragment extends Fragment {
 
             }
 
-            String txt = "";
+            StringBuilder txt = new StringBuilder();
             for (int i = 0; i < result.length; i++) {
-                txt += (i == result.length - 1) ? result[i] : result[i] + "  ";
+                txt.append((i == result.length - 1) ? result[i] : result[i] + "  ");
             }
 
             AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
             builder.setTitle(values[0]);
-            builder.setMessage(txt);
+            builder.setMessage(txt.toString());
 
             builder.setNegativeButton("close", new DialogInterface.OnClickListener() {
                 @Override

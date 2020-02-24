@@ -2,7 +2,6 @@ package org.armstrong.ika.digitalbibleapp.Notes;
 
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +16,7 @@ import org.armstrong.ika.digitalbibleapp.PreferenceProvider;
 import org.armstrong.ika.digitalbibleapp.R;
 
 import java.util.List;
+import java.util.Objects;
 
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
@@ -106,7 +106,7 @@ public class NotesFragment extends Fragment {
                 preferenceProvider.setNoteVars(noteVars);
 
                 final NotesSheet notesSheet = new NotesSheet();
-                notesSheet.show(getActivity().getSupportFragmentManager(), "notesSheet");
+                notesSheet.show(Objects.requireNonNull(getActivity()).getSupportFragmentManager(), "notesSheet");
 
                 new Handler().postDelayed(new Runnable() {
                     @Override

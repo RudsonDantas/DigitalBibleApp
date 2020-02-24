@@ -7,19 +7,17 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-import org.armstrong.ika.digitalbibleapp.MainActivity;
-import org.armstrong.ika.digitalbibleapp.PreferenceProvider;
-import org.armstrong.ika.digitalbibleapp.R;
-
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-public class NoteActivity extends AppCompatActivity {
+import org.armstrong.ika.digitalbibleapp.PreferenceProvider;
+import org.armstrong.ika.digitalbibleapp.R;
+
+public class NoteListActivity extends AppCompatActivity {
 
     protected PreferenceProvider preferenceProvider;
 
-    private String returnTo;
     private String action;
 
     @Override
@@ -30,7 +28,6 @@ public class NoteActivity extends AppCompatActivity {
         preferenceProvider = new PreferenceProvider(this);
 
         Bundle extras = getIntent().getExtras();
-        returnTo = extras.getString("returnTo");
         action = extras.getString("action");
 
         int color = preferenceProvider.getColorVar();
@@ -64,7 +61,7 @@ public class NoteActivity extends AppCompatActivity {
         textTwo.setTextSize(actionBarTextSize);
 
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.noteFragment, NoteFragment.newInstance(action))
+                .replace(R.id.noteFragment, NoteListFragment.newInstance(action))
                 .commitNow();
 
     }
@@ -86,21 +83,7 @@ public class NoteActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
 
-        Intent returnIntent = new Intent(NoteActivity.this, MainActivity.class);
+        Intent returnIntent = new Intent(NoteListActivity.this, NotesActivity.class);
         startActivity(returnIntent);
-
-//        switch (returnTo) {
-//            case "MainActivity":
-//                returnIntent = new Intent(NoteActivity.this, MainActivity.class);
-//                break;
-//            case "NotesActivity":
-//                returnIntent = new Intent(NoteActivity.this, NotesActivity.class);
-//                break;
-//            case "SearchesActivity":
-//                returnIntent = new Intent(NoteActivity.this, SearchesActivity.class);
-//                break;
-//        }
-//
-//        startActivity(returnIntent);
     }
 }
