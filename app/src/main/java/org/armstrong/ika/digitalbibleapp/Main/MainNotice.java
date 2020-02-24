@@ -46,48 +46,48 @@ public class MainNotice extends BottomSheetDialogFragment {
 
         ((View) view.getParent()).setBackgroundColor(Color.TRANSPARENT);
 
-        CoordinatorLayout.LayoutParams params = (CoordinatorLayout.LayoutParams) ((View) view.getParent()).getLayoutParams();
-        CoordinatorLayout.Behavior behavior = params.getBehavior();
-
-        if (behavior != null && behavior instanceof BottomSheetBehavior) {
-            ((BottomSheetBehavior) behavior).setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
-                @Override
-                public void onStateChanged(@NonNull View bottomSheet, int newState) {
-                    String state = "";
-
-                    switch (newState) {
-                        case BottomSheetBehavior.STATE_DRAGGING: {
-                            state = "DRAGGING";
-                            break;
-                        }
-                        case BottomSheetBehavior.STATE_SETTLING: {
-                            state = "SETTLING";
-                            break;
-                        }
-                        case BottomSheetBehavior.STATE_EXPANDED: {
-                            state = "EXPANDED";
-                            break;
-                        }
-                        case BottomSheetBehavior.STATE_COLLAPSED: {
-                            state = "COLLAPSED";
-                            break;
-                        }
-                        case BottomSheetBehavior.STATE_HIDDEN: {
-                            dismiss();
-                            state = "HIDDEN";
-                            break;
-                        }
-                    }
-
-                    //Toast.makeText(getContext(), "Bottom Sheet State Changed to: " + state, Toast.LENGTH_SHORT).show();
-                }
-
-                @Override
-                public void onSlide(@NonNull View bottomSheet, float slideOffset) {
-                }
-            });
-
-        }
+//        CoordinatorLayout.LayoutParams params = (CoordinatorLayout.LayoutParams) ((View) view.getParent()).getLayoutParams();
+////        CoordinatorLayout.Behavior behavior = params.getBehavior();
+////
+////        if (behavior != null && behavior instanceof BottomSheetBehavior) {
+////            ((BottomSheetBehavior) behavior).setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
+////                @Override
+////                public void onStateChanged(@NonNull View bottomSheet, int newState) {
+////                    String state = "";
+////
+////                    switch (newState) {
+////                        case BottomSheetBehavior.STATE_DRAGGING: {
+////                            state = "DRAGGING";
+////                            break;
+////                        }
+////                        case BottomSheetBehavior.STATE_SETTLING: {
+////                            state = "SETTLING";
+////                            break;
+////                        }
+////                        case BottomSheetBehavior.STATE_EXPANDED: {
+////                            state = "EXPANDED";
+////                            break;
+////                        }
+////                        case BottomSheetBehavior.STATE_COLLAPSED: {
+////                            state = "COLLAPSED";
+////                            break;
+////                        }
+////                        case BottomSheetBehavior.STATE_HIDDEN: {
+////                            dismiss();
+////                            state = "HIDDEN";
+////                            break;
+////                        }
+////                    }
+////
+////                    //Toast.makeText(getContext(), "Bottom Sheet State Changed to: " + state, Toast.LENGTH_SHORT).show();
+////                }
+////
+////                @Override
+////                public void onSlide(@NonNull View bottomSheet, float slideOffset) {
+////                }
+////            });
+////
+////        }
 
         String supp = getString(R.string.active_version_warning);
 

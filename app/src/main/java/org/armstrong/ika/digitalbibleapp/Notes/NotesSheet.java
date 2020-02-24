@@ -89,8 +89,7 @@ public class NotesSheet extends BottomSheetDialogFragment {
                         dismiss();
 
                         // go to bookmarked text
-                        Intent noteActivity = new Intent(getActivity(), NoteActivity.class);
-                        noteActivity.putExtra("returnTo", "NotesActivity");
+                        Intent noteActivity = new Intent(getActivity(), NoteListActivity.class);
                         noteActivity.putExtra("action", "edit");
                         startActivity(noteActivity);
 

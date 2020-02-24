@@ -2,7 +2,7 @@ package org.armstrong.ika.digitalbibleapp;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
+import androidx.preference.PreferenceManager;
 
 import org.armstrong.ika.digitalbibleapp.Common.CopyFromAssests;
 

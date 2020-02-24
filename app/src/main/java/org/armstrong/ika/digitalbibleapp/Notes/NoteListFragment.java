@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +16,6 @@ import androidx.fragment.app.Fragment;
 import com.google.android.material.textfield.TextInputLayout;
 
 import org.armstrong.ika.digitalbibleapp.Common.Utils;
-import org.armstrong.ika.digitalbibleapp.MainActivity;
 import org.armstrong.ika.digitalbibleapp.NotesDb.NotesEntities;
 import org.armstrong.ika.digitalbibleapp.NotesDb.NotesRepository;
 import org.armstrong.ika.digitalbibleapp.PreferenceProvider;
@@ -26,7 +24,7 @@ import org.armstrong.ika.digitalbibleapp.R;
 import java.util.Date;
 import java.util.List;
 
-public class NoteFragment extends Fragment {
+public class NoteListFragment extends Fragment {
 
     PreferenceProvider preferenceProvider;
 
@@ -43,11 +41,11 @@ public class NoteFragment extends Fragment {
 
     TextInputLayout textRefInputLayout, textNoteInputLayout;
 
-    private Button updateBtn, deleteBtn;
+    private Button updateBtn;
 
-    public static NoteFragment newInstance(String action) {
+    public static NoteListFragment newInstance(String action) {
 
-        NoteFragment notesFragment = new NoteFragment();
+        NoteListFragment notesFragment = new NoteListFragment();
 
         Bundle args = new Bundle();
         args.putString("action", action);
@@ -71,7 +69,7 @@ public class NoteFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
 
-        view = inflater.inflate(R.layout.note_fragment, parent, false);
+        view = inflater.inflate(R.layout.notelist_fragment, parent, false);
 
         return view;
 
@@ -152,7 +150,6 @@ public class NoteFragment extends Fragment {
         String dat = date.toString();
 
         updateBtn = view.findViewById(R.id.btn_update);
-        deleteBtn = view.findViewById(R.id.btn_delete);
 
         updateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -168,10 +165,10 @@ public class NoteFragment extends Fragment {
                         notesEntities.setDate(dat);
                         notesEntities.setRef(Utils.escapeString(ref.getText().toString()));
                         notesEntities.setText(Utils.escapeString(note.getText().toString()));
-                        notesEntities.setVersion(noteIntVars[0]);  // version
-                        notesEntities.setBook(noteIntVars[1]);  // book
-                        notesEntities.setChapter(noteIntVars[2]); // chapter
-                        notesEntities.setVerse(noteIntVars[3]); // verse
+                        notesEntities.setVersion(0);  // version
+                        notesEntities.setBook(0);  // book
+                        notesEntities.setChapter(0); // chapter
+                        notesEntities.setVerse(0); // verse
 
                         if (notesRepository.insertNote(notesEntities) != -1) {
 
@@ -180,7 +177,7 @@ public class NoteFragment extends Fragment {
                             new Handler().postDelayed(new Runnable() {
                                 @Override
                                 public void run() {
-                                    Intent returnIntent = new Intent(getActivity(), MainActivity.class);
+                                    Intent returnIntent = new Intent(getActivity(), NotesActivity.class);
                                     startActivity(returnIntent);
                                 }
                             }, 1000);
@@ -199,46 +196,12 @@ public class NoteFragment extends Fragment {
                             new Handler().postDelayed(new Runnable() {
                                 @Override
                                 public void run() {
-                                    Intent returnIntent = new Intent(getActivity(), MainActivity.class);
+                                    Intent returnIntent = new Intent(getActivity(), NotesActivity.class);
                                     startActivity(returnIntent);
                                 }
                             }, 1000);
                         }
                         break;
-                }
-            }
-        });
-
-        deleteBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Log.e("LOGG", "delete " + noteID);
-
-                if (noteID != null) {
-
-                    if (notesRepository.deleteNote(Integer.parseInt(noteID)) != -1) {
-
-                        Utils.makeToast(getContext(), getString(R.string.note_deleted));
-
-                        new Handler().postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                Intent returnIntent = new Intent(getActivity(), MainActivity.class);
-                                startActivity(returnIntent);
-                            }
-                        }, 1000);
-                    }
-                } else { // no id, just return
-
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            Intent returnIntent = new Intent(getActivity(), MainActivity.class);
-                            startActivity(returnIntent);
-                        }
-                    }, 1000);
-
                 }
             }
         });

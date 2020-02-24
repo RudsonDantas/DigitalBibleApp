@@ -32,7 +32,6 @@ import org.armstrong.ika.digitalbibleapp.LangKeyDb.LangRepository;
 import org.armstrong.ika.digitalbibleapp.Main.MainFragment;
 import org.armstrong.ika.digitalbibleapp.Main.MainNotice;
 import org.armstrong.ika.digitalbibleapp.More.MoreActivity;
-import org.armstrong.ika.digitalbibleapp.Notes.NotesUpgrade;
 import org.armstrong.ika.digitalbibleapp.Reference.ReferenceActivity;
 import org.armstrong.ika.digitalbibleapp.Searches.SearchesActivity;
 import org.armstrong.ika.digitalbibleapp.VerKeyDb.VersionRepository;
@@ -94,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
         new UpdateProvider(this).initialize(versionRepository);
 
         // upgrade notes
-        new NotesUpgrade(this).doNotesUpgrade();
+        //new NotesUpgrade(this).doNotesUpgrade();
 
         lang = versionRepository.getLangFromNumber(versionVars[0]); // lang
 

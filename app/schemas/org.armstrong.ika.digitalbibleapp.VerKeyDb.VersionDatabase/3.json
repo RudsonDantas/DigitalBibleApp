@@ -1,0 +1,70 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 3,
+    "identityHash": "7cb23b94735b5f8f4579cf7c6b07deaa",
+    "entities": [
+      {
+        "tableName": "version_key",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `number` INTEGER NOT NULL, `active` INTEGER NOT NULL, `copyRight` INTEGER NOT NULL, `verAbbr` TEXT, `transLang` TEXT, `verName` TEXT, PRIMARY KEY(`id`))",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "number",
+            "columnName": "number",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "active",
+            "columnName": "active",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "copyRight",
+            "columnName": "copyRight",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "verAbbr",
+            "columnName": "verAbbr",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "transLang",
+            "columnName": "transLang",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "verName",
+            "columnName": "verName",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '7cb23b94735b5f8f4579cf7c6b07deaa')"
+    ]
+  }
+}

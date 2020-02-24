@@ -68,14 +68,7 @@ public class NotesActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {  // click on the FAB
 
-                // start a new note
-//                String [] noteVars = {"", "", ""};
-//                int[] IntItems = {0,0,0,0};
-//                preferenceProvider.setNoteVars(noteVars);
-//                preferenceProvider.setNoteIntVars(IntItems);
-
-                Intent noteIntent = new Intent(getApplication(), NoteActivity.class);
-                noteIntent.putExtra("returnTo", "NotesActivity");
+                Intent noteIntent = new Intent(getApplication(), NoteListActivity.class);
                 noteIntent.putExtra("action", "new");
                 startActivity(noteIntent);
             }
