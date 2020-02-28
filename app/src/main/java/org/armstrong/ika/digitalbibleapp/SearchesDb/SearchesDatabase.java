@@ -8,7 +8,7 @@ import androidx.room.RoomDatabase;
 
 import static org.armstrong.ika.digitalbibleapp.Constants.SEARCH_HISTORY_DATABASE_NAME;
 
-@Database(entities = {SearchesEntities.class}, version = 1)
+@Database(version = 1, entities = {SearchesEntities.class})
 public abstract class SearchesDatabase extends RoomDatabase {
 
     public abstract SearchesDoa searchesDoa();

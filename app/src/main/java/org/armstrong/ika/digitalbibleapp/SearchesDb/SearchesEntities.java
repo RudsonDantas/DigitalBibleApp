@@ -9,10 +9,13 @@ public class SearchesEntities {
 
     @PrimaryKey(autoGenerate = true)
     private int id;
+
     @ColumnInfo(name = "date") // date as integer
     private int date;
+
     @ColumnInfo(name = "version") // bible version
     private int version;
+
     @ColumnInfo(name = "text") // search field text
     private String text;
 

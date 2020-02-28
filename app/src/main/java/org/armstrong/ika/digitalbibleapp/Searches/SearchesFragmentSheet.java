@@ -82,8 +82,6 @@ public class SearchesFragmentSheet extends BottomSheetDialogFragment {
         String items[] = {
                 getString(R.string.go_to),
                 getString(R.string.bookmark),
-                getString(R.string.highlight),
-                getString(R.string.add_note),
                 getString(R.string.share_verse)
         };
 
@@ -165,134 +163,136 @@ public class SearchesFragmentSheet extends BottomSheetDialogFragment {
 
                         break;
 
-                    case 2: // Highlight
+//                    case 2: // Highlight
+//
+//                        dismiss();
+//
+//                        HighlightRepository highlightRepository;
+//                        highlightRepository = new HighlightRepository(getContext());
+//
+//                        final HighlightEntities highlightEntities = new HighlightEntities();
+//
+//                        switch (preferenceProvider.getWheelStyle()) {
+//                            case "0":
+//                                wheelStyle = ColorPickerView.WHEEL_TYPE.FLOWER;
+//                                break;
+//                            case "1":
+//                                wheelStyle = ColorPickerView.WHEEL_TYPE.CIRCLE;
+//                                break;
+//                        }
+//
+//                        ColorPickerDialogBuilder
+//                                .with(getContext(), R.style.Theme_AppCompat_Dialog_Alert)
+//                                //.setTitle(R.string.color_dialog_title)
+//                                .initialColor(0xffffffff)
+//                                .wheelType(wheelStyle)
+//                                .density(12)
+//                                .setOnColorChangedListener(new OnColorChangedListener() {
+//                                    @Override
+//                                    public void onColorChanged(int selectedColor) {
+//                                        // Handle on color change
+//                                        //toast("onColorChanged: 0x" + Integer.toHexString(selectedColor));
+//                                    }
+//                                })
+//                                .setOnColorSelectedListener(new OnColorSelectedListener() {
+//                                    @Override
+//                                    public void onColorSelected(int selectedColor) {
+//                                        //toast("onColorSelected: 0x" + Integer.toHexString(selectedColor));
+//                                        //Utils.makeToast(getContext(),"onColorSelected: 0x" + Integer.toHexString(selectedColor));
+//                                    }
+//                                })
+//                                .setPositiveButton(R.string.ok, new ColorPickerClickListener() {
+//                                    @Override
+//                                    public void onClick(DialogInterface dialog, int selectedColor, Integer[] allColors) {
+//
+//                                        int z = preferenceProvider.getVersion(); // version
+//                                        int b = intSearchVars[0]; // book
+//                                        int c = intSearchVars[1]; // chapter
+//                                        int v = intSearchVars[2]; // verse
+//                                        //int p = positionVars[0]; // position
+//
+//                                        // color selection
+//                                        int col = 0;
+//                                        if (!(selectedColor == -1)) { // a color is selected
+//                                            col = lighter(selectedColor, 0.6f);
+//                                        } else { // no colour selected, use light gray
+//                                            col = lighter(-3355444, 0.6f); // LTGray
+//                                        }
+//
+//                                        // check if entry exists in highlight database
+//                                        int hid = highlightRepository.getHighlightExists(z, b, c, v);
+//
+//                                        if (hid != 0) {
+//                                            // if entry already exists, update color
+//                                            highlightRepository.updateColor(col, hid);
+//
+//                                        } else {
+//
+//                                            // if entry does not exist, insert new entry
+//                                            highlightEntities.setAbbreviation(stringSearchVars[0]);
+//                                            highlightEntities.setVersion(z);
+//                                            highlightEntities.setBookname(stringSearchVars[2]);
+//                                            highlightEntities.setBook(b);
+//                                            highlightEntities.setChapter(c);
+//                                            highlightEntities.setVerse(v);
+//                                            highlightEntities.setText(stringSearchVars[1]);
+//                                            highlightEntities.setColor(col);
+//
+//                                            if (highlightRepository.insertHighlight(highlightEntities) != -1) { // returns long
+//                                                // toast gives error
+//                                                //Utils.makeToast(getContext(),getString(R.string.highlight_added));
+//
+//                                            }
+//                                        }
+//                                        // refresh search list
+//                                        SearchesFragment.getInstance().reloadSearch();
+//
+//
+//                                    }
+//                                })
+//                                .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+//                                    @Override
+//                                    public void onClick(DialogInterface dialog, int which) {
+//                                        // do nothing
+//                                    }
+//                                })
+//                                .showColorEdit(false)
+//                                //.setColorEditTextColor(ContextCompat.getColor(SampleActivity.this, android.R.color.holo_blue_bright))
+//                                .build()
+//                                .show();
+//
+//                        break;
+
+//                    case 3: // Notes
+//
+//                        dismiss();
+//
+//                        StringBuilder sb = new StringBuilder();
+//
+//                        sb.append(stringSearchVars[2]);
+//                        sb.append(" ");
+//                        sb.append(intSearchVars[1]);
+//                        sb.append(":");
+//                        sb.append(intSearchVars[2]);
+//
+//                        String noteText = stringSearchVars[1];
+//
+//                        String[] noteVars = {"", sb.toString(), noteText};
+//
+//                        preferenceProvider.setNoteVars(noteVars);
+//
+//                        Intent noteIntent = new Intent(getActivity(), NoteActivity.class);
+//                        noteIntent.putExtra("returnTo", "SearchesActivity");
+//                        noteIntent.putExtra("action", "insert");
+//                        startActivity(noteIntent);
+//
+//                        break;
+
+                    case 2: // share
 
                         dismiss();
 
-                        HighlightRepository highlightRepository;
-                        highlightRepository = new HighlightRepository(getContext());
-
-                        final HighlightEntities highlightEntities = new HighlightEntities();
-
-                        switch (preferenceProvider.getWheelStyle()) {
-                            case "0":
-                                wheelStyle = ColorPickerView.WHEEL_TYPE.FLOWER;
-                                break;
-                            case "1":
-                                wheelStyle = ColorPickerView.WHEEL_TYPE.CIRCLE;
-                                break;
-                        }
-
-                        ColorPickerDialogBuilder
-                                .with(getContext(), R.style.Theme_AppCompat_Dialog_Alert)
-                                //.setTitle(R.string.color_dialog_title)
-                                .initialColor(0xffffffff)
-                                .wheelType(wheelStyle)
-                                .density(12)
-                                .setOnColorChangedListener(new OnColorChangedListener() {
-                                    @Override
-                                    public void onColorChanged(int selectedColor) {
-                                        // Handle on color change
-                                        //toast("onColorChanged: 0x" + Integer.toHexString(selectedColor));
-                                    }
-                                })
-                                .setOnColorSelectedListener(new OnColorSelectedListener() {
-                                    @Override
-                                    public void onColorSelected(int selectedColor) {
-                                        //toast("onColorSelected: 0x" + Integer.toHexString(selectedColor));
-                                        //Utils.makeToast(getContext(),"onColorSelected: 0x" + Integer.toHexString(selectedColor));
-                                    }
-                                })
-                                .setPositiveButton(R.string.ok, new ColorPickerClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int selectedColor, Integer[] allColors) {
-
-                                        int z = preferenceProvider.getVersion(); // version
-                                        int b = intSearchVars[0]; // book
-                                        int c = intSearchVars[1]; // chapter
-                                        int v = intSearchVars[2]; // verse
-                                        //int p = positionVars[0]; // position
-
-                                        // color selection
-                                        int col = 0;
-                                        if (!(selectedColor == -1)) { // a color is selected
-                                            col = lighter(selectedColor, 0.6f);
-                                        } else { // no colour selected, use light gray
-                                            col = lighter(-3355444, 0.6f); // LTGray
-                                        }
-
-                                        // check if entry exists in highlight database
-                                        int hid = highlightRepository.getHighlightExists(z, b, c, v);
-
-                                        if (hid != 0) {
-                                            // if entry already exists, update color
-                                            highlightRepository.updateColor(col, hid);
-
-                                        } else {
-
-                                            // if entry does not exist, insert new entry
-                                            highlightEntities.setAbbreviation(stringSearchVars[0]);
-                                            highlightEntities.setVersion(z);
-                                            highlightEntities.setBookname(stringSearchVars[2]);
-                                            highlightEntities.setBook(b);
-                                            highlightEntities.setChapter(c);
-                                            highlightEntities.setVerse(v);
-                                            highlightEntities.setText(stringSearchVars[1]);
-                                            highlightEntities.setColor(col);
-
-                                            if (highlightRepository.insertHighlight(highlightEntities) != -1) { // returns long
-                                                // toast gives error
-                                                //Utils.makeToast(getContext(),getString(R.string.highlight_added));
-
-                                            }
-                                        }
-                                        // refresh search list
-                                        SearchesFragment.getInstance().reloadSearch();
-
-
-                                    }
-                                })
-                                .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        // do nothing
-                                    }
-                                })
-                                .showColorEdit(false)
-                                //.setColorEditTextColor(ContextCompat.getColor(SampleActivity.this, android.R.color.holo_blue_bright))
-                                .build()
-                                .show();
-
-                        break;
-
-                    case 3: // Notes
-
-                        dismiss();
-
-                        StringBuilder sb = new StringBuilder();
-
-                        sb.append(stringSearchVars[2]);
-                        sb.append(" ");
-                        sb.append(intSearchVars[1]);
-                        sb.append(":");
-                        sb.append(intSearchVars[2]);
-
-                        String noteText = stringSearchVars[1];
-
-                        String[] noteVars = {"", sb.toString(), noteText};
-
-                        preferenceProvider.setNoteVars(noteVars);
-
-                        Intent noteIntent = new Intent(getActivity(), NoteActivity.class);
-                        noteIntent.putExtra("returnTo", "SearchesActivity");
-                        noteIntent.putExtra("action", "insert");
-                        startActivity(noteIntent);
-
-                        break;
-
-                    case 4: // share
-
-                        dismiss();
+                        String subj = getString(R.string.app_name);
 
                         StringBuilder ssb = new StringBuilder();
 
@@ -311,7 +311,7 @@ public class SearchesFragmentSheet extends BottomSheetDialogFragment {
                         shareIntent.setAction(Intent.ACTION_SEND);
                         shareIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         shareIntent.setType("text/plain");
-                        //shareIntent.putExtra(Intent.EXTRA_SUBJECT, subj);
+                        shareIntent.putExtra(Intent.EXTRA_SUBJECT, subj);
                         shareIntent.putExtra(Intent.EXTRA_TEXT, ssb.toString());
 
                         Intent intent = Intent.createChooser(shareIntent, getString(R.string.share_verse));

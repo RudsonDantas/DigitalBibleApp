@@ -1,5 +1,6 @@
 package org.armstrong.ika.digitalbibleapp.LangKeyDb;
 
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
@@ -9,11 +10,17 @@ public class LangEntities {
 
     @PrimaryKey
     private int id;  // no auto increment
+
     @ColumnInfo(name = "number") // 1
+    @NonNull
     private int number;
+
     @ColumnInfo(name = "code") // eng
+    @NonNull
     private String code;
+
     @ColumnInfo(name = "name") // Genesis
+    @NonNull
     private String name;
 
     public LangEntities() {

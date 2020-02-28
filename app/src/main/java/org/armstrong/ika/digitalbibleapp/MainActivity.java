@@ -89,12 +89,6 @@ public class MainActivity extends AppCompatActivity {
 
         langRepository = new LangRepository(this);
 
-        // update databases
-        new UpdateProvider(this).initialize(versionRepository);
-
-        // upgrade notes
-        //new NotesUpgrade(this).doNotesUpgrade();
-
         lang = versionRepository.getLangFromNumber(versionVars[0]); // lang
 
         abbreviation = versionRepository.getAbbreviation(versionVars[0]); // KJV

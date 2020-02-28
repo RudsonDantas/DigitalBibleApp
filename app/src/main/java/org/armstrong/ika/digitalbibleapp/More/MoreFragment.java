@@ -240,17 +240,18 @@ public class MoreFragment extends Fragment {
                     case 7: // share Digital Bible App
 
                         StringBuilder sb = new StringBuilder();
-
-                        sb.append(R.string.share_dba_text);
+                        sb.append(getString(R.string.share_dba_text));
                         sb.append("\n\n");
                         sb.append("https://play.google.com/store/apps/details?id=org.armstrong.ika.digitalbibleapp&amp;hl=en-GB&amp;ah=am-bre2MchrvZuoZauamIC3ceTk");
+
+                        String subj = getString(R.string.app_name);
 
                         Intent shareIntent = new Intent();
 
                         shareIntent.setAction(Intent.ACTION_SEND);
                         shareIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         shareIntent.setType("text/plain");
-                        //shareIntent.putExtra(Intent.EXTRA_SUBJECT, subj);
+                        shareIntent.putExtra(Intent.EXTRA_SUBJECT, subj);
                         shareIntent.putExtra(Intent.EXTRA_TEXT, sb.toString());
 
                         Intent intent = Intent.createChooser(shareIntent, Integer.toString(R.string.share_app));

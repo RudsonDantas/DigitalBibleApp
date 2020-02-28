@@ -2,12 +2,18 @@
   "formatVersion": 1,
   "database": {
     "version": 2,
-    "identityHash": "15a291df34fed185a121feef4d8d9286",
+    "identityHash": "36934567f0ad0da68bc29d4840da9b06",
     "entities": [
       {
         "tableName": "version_key",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`number` INTEGER NOT NULL, `active` INTEGER NOT NULL, `copyRight` INTEGER NOT NULL, `verAbbr` TEXT, `transLang` TEXT, `verName` TEXT, PRIMARY KEY(`number`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `number` INTEGER NOT NULL, `active` INTEGER NOT NULL, `copyRight` INTEGER NOT NULL, `verAbbr` TEXT NOT NULL, `transLang` TEXT NOT NULL, `verName` TEXT NOT NULL, PRIMARY KEY(`id`))",
         "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
           {
             "fieldPath": "number",
             "columnName": "number",
@@ -30,24 +36,24 @@
             "fieldPath": "verAbbr",
             "columnName": "verAbbr",
             "affinity": "TEXT",
-            "notNull": false
+            "notNull": true
           },
           {
             "fieldPath": "transLang",
             "columnName": "transLang",
             "affinity": "TEXT",
-            "notNull": false
+            "notNull": true
           },
           {
             "fieldPath": "verName",
             "columnName": "verName",
             "affinity": "TEXT",
-            "notNull": false
+            "notNull": true
           }
         ],
         "primaryKey": {
           "columnNames": [
-            "number"
+            "id"
           ],
           "autoGenerate": false
         },
@@ -55,9 +61,10 @@
         "foreignKeys": []
       }
     ],
+    "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"15a291df34fed185a121feef4d8d9286\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '36934567f0ad0da68bc29d4840da9b06')"
     ]
   }
 }

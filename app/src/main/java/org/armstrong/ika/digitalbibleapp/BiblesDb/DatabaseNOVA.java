@@ -10,20 +10,12 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import static org.armstrong.ika.digitalbibleapp.Constants.NOVA_DATABASE_NAME;
 
-@Database(entities = {BiblesEntities.class}, version = 2)
+@Database(version = 1, entities = {BiblesEntities.class})
 public abstract class DatabaseNOVA extends RoomDatabase {
 
     public abstract BiblesDoa biblesDoa();
 
     private static DatabaseNOVA INSTANCE;
-
-
-    static final Migration MIGRATION_1_2 = new Migration(1, 2) {
-        @Override
-        public void migrate(SupportSQLiteDatabase database) {
-            // Since we didn't alter the table, there's nothing else to do here.
-        }
-    };
 
     public static DatabaseNOVA getInstance(Context context) {
 
@@ -31,7 +23,8 @@ public abstract class DatabaseNOVA extends RoomDatabase {
             INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
                     DatabaseNOVA.class, NOVA_DATABASE_NAME)
                     .allowMainThreadQueries()
-                    .addMigrations(MIGRATION_1_2)
+                    .createFromAsset("dba_nvul.db")
+                    .fallbackToDestructiveMigration()
                     .build();
         }
 

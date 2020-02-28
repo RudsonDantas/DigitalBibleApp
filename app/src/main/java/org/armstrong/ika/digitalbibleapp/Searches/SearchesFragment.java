@@ -236,12 +236,12 @@ public class SearchesFragment extends Fragment {
 
     }
 
-    public void reloadSearch() {
-        highlights = highlightRepository.getChapHighlights(versionVars[0], versionVars[1], versionVars[2]); //version, book, chapter
-        searchesFragmentAdapter = new SearchesFragmentAdapter(highlights, textSize, query, context, lang);
-        recyclerView.setAdapter(searchesFragmentAdapter);
-        searchesFragmentAdapter.setValues(values);
-    }
+//    public void reloadSearch() {
+//        highlights = highlightRepository.getChapHighlights(versionVars[0], versionVars[1], versionVars[2]); //version, book, chapter
+//        searchesFragmentAdapter = new SearchesFragmentAdapter(highlights, textSize, query, context, lang);
+//        recyclerView.setAdapter(searchesFragmentAdapter);
+//        searchesFragmentAdapter.setValues(values);
+//    }
 
     public static SearchesFragment getInstance() {
         return instance;

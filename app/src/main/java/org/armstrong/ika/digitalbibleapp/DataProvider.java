@@ -62,9 +62,6 @@ public class DataProvider extends ContentProvider {
         // set version active
         versionRepository.setVersionActive(1, number);// active, version
 
-        // update databases
-        new UpdateProvider(getContext()).initialize(versionRepository);
-
         biblesRepository.initialize(number);
 
         // Cursor cursor;

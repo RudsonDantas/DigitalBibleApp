@@ -1,5 +1,6 @@
 package org.armstrong.ika.digitalbibleapp.VerKeyDb;
 
+import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
@@ -10,21 +11,37 @@ import androidx.room.PrimaryKey;
 public class VersionEntities {
 
     @PrimaryKey
+    int id;
+
     @ColumnInfo(name = "number") // version number
+    @NonNull
     private int number;
+
     @ColumnInfo(name = "active") // active or not active
+    @NonNull
     private int active;
+
     @ColumnInfo(name = "copyRight") // copyright 1=no, 0=yes
+    @NonNull
     private int copyRight;
+
     @ColumnInfo(name = "verAbbr") // Version Abbreviation
+    @NonNull
     private String verAbbr;
+
     @ColumnInfo(name = "transLang") // language of translation
+    @NonNull
     private String transLang;
+
     @ColumnInfo(name = "verName") // Version name
+    @NonNull
     private String verName;
 
-    public VersionEntities() {
-
+    public int getId() {
+        return id;
+    }
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getNumber() {return number;}

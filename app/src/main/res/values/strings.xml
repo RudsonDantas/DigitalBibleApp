@@ -9,7 +9,7 @@
     <string name="yes">YES</string>
     <string name="no">NO</string>
     <string name="active_version_warning">You need to activate at least two Bible versions!</string>
-    <string name="share_dba_text">I would like to share Digital Bible App with you.</string>
+    <string name="share_dba_text">I would like to share Digital Bible App with you. Click on the link below.</string>
     <string name="hint_password">password</string>
     <string name="hint_reference">reference</string>
     <string name="hint_note">note</string>
