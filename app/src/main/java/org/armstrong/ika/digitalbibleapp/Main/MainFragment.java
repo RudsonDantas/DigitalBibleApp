@@ -26,6 +26,7 @@ import org.armstrong.ika.digitalbibleapp.NotesDb.NotesEntities;
 import org.armstrong.ika.digitalbibleapp.NotesDb.NotesRepository;
 import org.armstrong.ika.digitalbibleapp.PreferenceProvider;
 import org.armstrong.ika.digitalbibleapp.R;
+import org.armstrong.ika.digitalbibleapp.VerKeyDb.VersionRepository;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -57,6 +58,8 @@ public class MainFragment extends Fragment {
     //protected BiblesRepository biblesRepository;
 
     protected BiblesViewModel biblesViewModel;
+
+    protected VersionRepository versionRepository;
 
     private View view;
 
@@ -115,6 +118,8 @@ public class MainFragment extends Fragment {
         preferenceProvider = new PreferenceProvider(getContext());
         versionVars = preferenceProvider.getVersionVars();
 
+        versionRepository = new VersionRepository(getContext());
+
         //biblesRepository = new BiblesRepository(getContext());
         //biblesRepository.initialize(versionVars[0]);
 
@@ -129,6 +134,9 @@ public class MainFragment extends Fragment {
         book_name =  getArguments().getString("book_name", "John");
         version = getArguments().getInt("version", 1);
         textSize = preferenceProvider.gettextSizeVar();
+
+        // update active versions - necessary because of DB change.
+        versionRepository.setVersionActive(1, book);
 
         target = verse - 1;
 

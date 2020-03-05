@@ -126,6 +126,7 @@ public class MoreFragment extends Fragment {
             public void onClick(View view, int position) {
 
                 switch (position) {
+
                     case 0: // Activate/Deactivate Versions
 
                         final VersionSheet versionSheet = new VersionSheet();
