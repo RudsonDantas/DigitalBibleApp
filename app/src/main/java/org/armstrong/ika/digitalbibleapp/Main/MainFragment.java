@@ -59,7 +59,7 @@ public class MainFragment extends Fragment {
 
     protected BiblesViewModel biblesViewModel;
 
-    protected VersionRepository versionRepository;
+    //protected VersionRepository versionRepository;
 
     private View view;
 
@@ -118,7 +118,7 @@ public class MainFragment extends Fragment {
         preferenceProvider = new PreferenceProvider(getContext());
         versionVars = preferenceProvider.getVersionVars();
 
-        versionRepository = new VersionRepository(getContext());
+        //versionRepository = new VersionRepository(getContext());
 
         //biblesRepository = new BiblesRepository(getContext());
         //biblesRepository.initialize(versionVars[0]);
@@ -136,7 +136,7 @@ public class MainFragment extends Fragment {
         textSize = preferenceProvider.gettextSizeVar();
 
         // update active versions - necessary because of DB change.
-        versionRepository.setVersionActive(1, book);
+        //versionRepository.setVersionActive(1, book);
 
         target = verse - 1;
 

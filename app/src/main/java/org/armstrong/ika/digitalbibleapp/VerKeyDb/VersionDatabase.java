@@ -38,6 +38,7 @@ public abstract class VersionDatabase extends RoomDatabase {
                     VersionDatabase.class, VERSION_KEY_DATABASE_NAME)
                     .allowMainThreadQueries()
                     .addCallback(RoomDatabaseCallback)
+                    .fallbackToDestructiveMigration()
                     .build();
         }
 
@@ -54,13 +55,13 @@ public abstract class VersionDatabase extends RoomDatabase {
             db.execSQL("BEGIN TRANSACTION;");
 
             db.execSQL("INSERT INTO version_key (number,active,copyRight,verAbbr,transLang,verName) VALUES(1,1,1,'KJV','eng','King James')");
-            db.execSQL("INSERT INTO version_key (number,active,copyRight,verAbbr,transLang,verName) VALUES(2,0,1,'CLVUL','lat','Vulgata Clementina')");
-            db.execSQL("INSERT INTO version_key (number,active,copyRight,verAbbr,transLang,verName) VALUES(3,0,1,'CPDV','eng','Catholic PDV')");
-            db.execSQL("INSERT INTO version_key (number,active,copyRight,verAbbr,transLang,verName) VALUES(4,0,1,'NVUL','lat','Nova Vulgata')");
+            db.execSQL("INSERT INTO version_key (number,active,copyRight,verAbbr,transLang,verName) VALUES(2,1,1,'CLVUL','lat','Vulgata Clementina')");
+            db.execSQL("INSERT INTO version_key (number,active,copyRight,verAbbr,transLang,verName) VALUES(3,1,1,'CPDV','eng','Catholic PDV')");
+            db.execSQL("INSERT INTO version_key (number,active,copyRight,verAbbr,transLang,verName) VALUES(4,1,1,'NVUL','lat','Nova Vulgata')");
             db.execSQL("INSERT INTO version_key (number,active,copyRight,verAbbr,transLang,verName) VALUES(5,0,0,'AFR53','afr','Afrikaans 1933/53')");
             db.execSQL("INSERT INTO version_key (number,active,copyRight,verAbbr,transLang,verName) VALUES(6,0,0,'DN1933','dan','Bibelen på Dansk 1933')");
-            db.execSQL("INSERT INTO version_key (number,active,copyRight,verAbbr,transLang,verName) VALUES(7,0,1,'UKJV','eng','Updated King James')");
-            db.execSQL("INSERT INTO version_key (number,active,copyRight,verAbbr,transLang,verName) VALUES(8,0,1,'WEBBE','eng','World English Bible')");
+            db.execSQL("INSERT INTO version_key (number,active,copyRight,verAbbr,transLang,verName) VALUES(7,1,1,'UKJV','eng','Updated King James')");
+            db.execSQL("INSERT INTO version_key (number,active,copyRight,verAbbr,transLang,verName) VALUES(8,1,1,'WEBBE','eng','World English Bible')");
             db.execSQL("INSERT INTO version_key (number,active,copyRight,verAbbr,transLang,verName) VALUES(9,0,0,'AFR83','afr','Afrikaans 1983')");
 
             db.execSQL("COMMIT;");

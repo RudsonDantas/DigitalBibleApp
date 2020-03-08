@@ -2,7 +2,7 @@ package org.armstrong.ika.digitalbibleapp;
 
 final public class Constants {
 
-    public static final String VERSION_KEY_DATABASE_NAME = "version_key.db"; //updated
+    public static final String VERSION_KEY_DATABASE_NAME = "versions.db"; //updated
     public static final String LANGUAGE_KEY_DATABASE_NAME = "language_key.db"; //updated
     public static final String SEARCH_HISTORY_DATABASE_NAME = "search_history.db"; // updated
     public static final String BOOKMARKS_DATABASE_NAME = "dba_bookmarks.db";

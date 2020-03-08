@@ -1,17 +1,18 @@
 package org.armstrong.ika.digitalbibleapp.Notes;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.textfield.TextInputLayout;
@@ -213,33 +214,51 @@ public class NoteFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                Log.e("LOGG", "delete " + noteID);
+                StringBuilder sb = new StringBuilder();
+                sb.append(getString(R.string.are_you_sure));
 
-                if (noteID != null) {
-
-                    if (notesRepository.deleteNote(Integer.parseInt(noteID)) != -1) {
-
-                        Utils.makeToast(getContext(), getString(R.string.note_deleted));
-
-                        new Handler().postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
-                                Intent returnIntent = new Intent(getActivity(), MainActivity.class);
-                                startActivity(returnIntent);
+                AlertDialog.Builder dialog = new AlertDialog.Builder(getContext());
+                dialog.setTitle(R.string.delete)
+                        .setMessage(sb.toString())
+                        .setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialoginterface, int i) {
+                                dialoginterface.cancel();
                             }
-                        }, 1000);
-                    }
-                } else { // no id, just return
+                        })
+                        .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
 
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            Intent returnIntent = new Intent(getActivity(), MainActivity.class);
-                            startActivity(returnIntent);
-                        }
-                    }, 1000);
+                            public void onClick(DialogInterface dialoginterface, int i) {
 
-                }
+                                if (noteID != null) { // delete note with id
+
+                                    if (notesRepository.deleteNote(Integer.parseInt(noteID)) != -1) {
+
+                                        Utils.makeToast(getContext(), getString(R.string.note_deleted));
+
+                                        new Handler().postDelayed(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                Intent returnIntent = new Intent(getActivity(), MainActivity.class);
+                                                startActivity(returnIntent);
+                                            }
+                                        }, 1000);
+                                    }
+
+                                } else { // no id, just return
+
+                                    Utils.makeToast(getContext(), getString(R.string.note_deleted));
+
+                                    new Handler().postDelayed(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            Intent returnIntent = new Intent(getActivity(), MainActivity.class);
+                                            startActivity(returnIntent);
+                                        }
+                                    }, 1000);
+
+                                }
+                            }
+                        }).show();
             }
         });
 
