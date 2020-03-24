@@ -34,7 +34,7 @@ public class PreferenceProvider {
     }
 
     public int getActionBarTextSizeVar() {
-        return sharedPreferences.getInt("textSize", 16) + 3;
+        return sharedPreferences.getInt("textSize", 16) - 2;
     }
 
     public String getlanguageCodeVar() {

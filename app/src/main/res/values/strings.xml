@@ -81,4 +81,6 @@
     <string name="btn_update">Update</string>
     <string name="btn_delete">Delete</string>
     <string name="are_you_sure">Are you sure?</string>
+    <string name="title_one">title one</string>
+    <string name="title_two">title two</string>
 </resources>

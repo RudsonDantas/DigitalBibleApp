@@ -164,13 +164,13 @@ public class SearchesActivity extends AppCompatActivity {
         textOne = toolbar.findViewById(R.id.action_bar_title_one);
         textOne.setText(R.string.search);
         textOne.setTextColor(Color.parseColor("#FFFFFF"));
-        textOne.setTextSize(textSize + 3);
+        textOne.setTextSize(preferenceProvider.getActionBarTextSizeVar());
 
         // Action Bar Text Two
         textTwo = toolbar.findViewById(R.id.action_bar_title_two);
         textTwo.setText(abbreviation);
         textTwo.setTextColor(Color.parseColor("#FFFFFF"));
-        textTwo.setTextSize(textSize + 3);
+        textTwo.setTextSize(preferenceProvider.getActionBarTextSizeVar());
 
         // make Text Two clickable
         textTwo.setOnClickListener(new View.OnClickListener() {

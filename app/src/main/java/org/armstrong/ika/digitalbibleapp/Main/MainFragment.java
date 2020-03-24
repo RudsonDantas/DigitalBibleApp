@@ -26,7 +26,6 @@ import org.armstrong.ika.digitalbibleapp.NotesDb.NotesEntities;
 import org.armstrong.ika.digitalbibleapp.NotesDb.NotesRepository;
 import org.armstrong.ika.digitalbibleapp.PreferenceProvider;
 import org.armstrong.ika.digitalbibleapp.R;
-import org.armstrong.ika.digitalbibleapp.VerKeyDb.VersionRepository;
 
 import java.util.ArrayList;
 import java.util.Date;

@@ -8,15 +8,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 
-import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 import org.armstrong.ika.digitalbibleapp.PreferenceProvider;
 import org.armstrong.ika.digitalbibleapp.R;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.coordinatorlayout.widget.CoordinatorLayout;
 
 import static android.graphics.Typeface.BOLD_ITALIC;
 

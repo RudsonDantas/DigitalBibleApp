@@ -5,8 +5,6 @@ import android.content.Context;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
-import androidx.room.migration.Migration;
-import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import static org.armstrong.ika.digitalbibleapp.Constants.CLEM_DATABASE_NAME;
 

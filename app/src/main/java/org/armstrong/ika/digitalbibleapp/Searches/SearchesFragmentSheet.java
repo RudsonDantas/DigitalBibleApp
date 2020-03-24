@@ -2,7 +2,6 @@ package org.armstrong.ika.digitalbibleapp.Searches;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -14,10 +13,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.flask.colorpicker.ColorPickerView;
-import com.flask.colorpicker.OnColorChangedListener;
-import com.flask.colorpicker.OnColorSelectedListener;
-import com.flask.colorpicker.builder.ColorPickerClickListener;
-import com.flask.colorpicker.builder.ColorPickerDialogBuilder;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 import org.armstrong.ika.digitalbibleapp.BookmarkDb.BookmarkEntities;
@@ -27,18 +22,13 @@ import org.armstrong.ika.digitalbibleapp.Common.Menu.MenuItemsAdapter;
 import org.armstrong.ika.digitalbibleapp.Common.MenuItemsModel;
 import org.armstrong.ika.digitalbibleapp.Common.RecyclerTouchListener;
 import org.armstrong.ika.digitalbibleapp.Common.Utils;
-import org.armstrong.ika.digitalbibleapp.HightlightDb.HighlightEntities;
-import org.armstrong.ika.digitalbibleapp.HightlightDb.HighlightRepository;
 import org.armstrong.ika.digitalbibleapp.MainActivity;
-import org.armstrong.ika.digitalbibleapp.Notes.NoteActivity;
 import org.armstrong.ika.digitalbibleapp.PreferenceProvider;
 import org.armstrong.ika.digitalbibleapp.R;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
-import static org.armstrong.ika.digitalbibleapp.Common.Utils.lighter;
 
 public class SearchesFragmentSheet extends BottomSheetDialogFragment {
 
